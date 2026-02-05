@@ -7,7 +7,7 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  const { email, password, name, orgName } = req.body || {};
+  const { email, password, name, orgName, userType } = req.body || {};
   if (!email || !password || !name) {
     res.status(400).json({ error: "Missing required fields" });
     return;
@@ -27,6 +27,7 @@ module.exports = async function handler(req, res) {
         email,
         passwordHash,
         name,
+        userType: userType === "TEAM" ? "TEAM" : "INDIVIDUAL",
       },
     });
 

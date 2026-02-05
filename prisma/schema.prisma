@@ -49,11 +49,17 @@ enum SubscriptionStatus {
   CANCELED
 }
 
+enum UserType {
+  INDIVIDUAL
+  TEAM
+}
+
 model User {
   id           String                @id @default(uuid())
   email        String                @unique
   passwordHash String
   name         String
+  userType     UserType              @default(INDIVIDUAL)
   createdAt    DateTime              @default(now())
   updatedAt    DateTime              @updatedAt
   memberships  OrganizationMember[]
