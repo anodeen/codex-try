@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HiHello-ish — Digital Business Cards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <span class="logo">HiHello-ish</span>
+        <div class="nav-actions">
+          <button class="ghost" data-open-auth>Login</button>
+          <button class="primary" data-open-paywall>Create your card</button>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <div class="hero-copy">
+          <p class="eyebrow">Digital business cards</p>
+          <h1>Make meaningful connections with a modern, shareable card.</h1>
+          <p class="subhead">
+            Create branded profiles, share with a QR or link, and capture leads instantly. Built for
+            individuals, teams, and events.
+          </p>
+          <div class="cta-row">
+            <button class="primary" data-open-paywall>Start free</button>
+            <button class="ghost">See demo</button>
+          </div>
+          <div class="trust">
+            <span>Trusted by modern teams</span>
+            <div class="trust-logos">
+              <span>Nova</span>
+              <span>Cloudly</span>
+              <span>Solara</span>
+              <span>Atlas</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="preview-card">
+            <div class="preview-avatar" id="preview-avatar">SK</div>
+            <div>
+              <h2 id="preview-name">Sasha Keene</h2>
+              <p id="preview-title">Partnerships Lead · Northwind</p>
+              <p id="preview-bio">Let's connect about events, partnerships, and community.</p>
+            </div>
+            <div class="preview-actions">
+              <button class="primary">Save contact</button>
+              <button class="ghost">Book a meeting</button>
+            </div>
+            <div class="preview-links">
+              <span>LinkedIn</span>
+              <span>Website</span>
+              <span>Calendly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="builder">
+        <div>
+          <h2>Build your card in minutes</h2>
+          <p>
+            Update your profile details and watch the card preview update live. Share with a QR code or
+            link.
+          </p>
+        </div>
+        <div class="builder-grid">
+          <form class="builder-form" id="builder-form">
+            <label>
+              Full name
+              <input type="text" id="name" value="Sasha Keene" required />
+            </label>
+            <label>
+              Title & company
+              <input type="text" id="title" value="Partnerships Lead · Northwind" required />
+            </label>
+            <label>
+              Short bio
+              <textarea id="bio" rows="3">Let's connect about events, partnerships, and community.</textarea>
+            </label>
+            <label>
+              Accent color
+              <input type="color" id="accent" value="#5c6cff" />
+            </label>
+            <label>
+              Initials
+              <input type="text" id="initials" value="SK" maxlength="2" />
+            </label>
+            <button class="primary" type="submit">Generate share link</button>
+          </form>
+          <aside class="builder-preview">
+            <div class="qr">QR</div>
+            <p class="share">hihello-ish.me/sasha</p>
+            <ul>
+              <li>Shareable link & QR</li>
+              <li>Lead capture form</li>
+              <li>CRM integrations</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="features">
+        <h2>Everything teams need</h2>
+        <div class="feature-grid">
+          <article>
+            <h3>Team templates</h3>
+            <p>Keep branding consistent across every member with managed themes.</p>
+          </article>
+          <article>
+            <h3>Lead capture</h3>
+            <p>Collect contact info and sync to your CRM automatically.</p>
+          </article>
+          <article>
+            <h3>Analytics</h3>
+            <p>Measure engagement with card views, clicks, and share metrics.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="feature-stack">
+        <div>
+          <h2>All the essential features, in one place</h2>
+          <p>
+            From authentication to Paystack payments, this stack covers everything you need to launch
+            a production-ready digital card platform.
+          </p>
+        </div>
+        <div class="stack-grid">
+          <article>
+            <h3>Authentication</h3>
+            <ul>
+              <li>Email + password login</li>
+              <li>Password reset & verification</li>
+              <li>Team invites + roles</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Card builder</h3>
+            <ul>
+              <li>Rich profile editor</li>
+              <li>Custom links & CTAs</li>
+              <li>Theme + brand controls</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Sharing</h3>
+            <ul>
+              <li>Public short links</li>
+              <li>QR & vCard export</li>
+              <li>Wallet pass support</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Lead capture</h3>
+            <ul>
+              <li>Custom intake forms</li>
+              <li>Auto follow-ups</li>
+              <li>CSV exports</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Analytics</h3>
+            <ul>
+              <li>Views & taps</li>
+              <li>CTA conversion rates</li>
+              <li>Team-level reporting</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Paystack billing</h3>
+            <ul>
+              <li>Subscriptions + trials</li>
+              <li>Secure checkout</li>
+              <li>Billing portal</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Integrations</h3>
+            <ul>
+              <li>HubSpot & Salesforce</li>
+              <li>Calendly & Zapier</li>
+              <li>Webhook automation</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Security</h3>
+            <ul>
+              <li>GDPR/CCPA ready</li>
+              <li>PII encryption</li>
+              <li>Audit logs</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard">
+        <div>
+          <h2>Insightful analytics dashboard</h2>
+          <p>Track every view, tap, and lead with a unified reporting workspace.</p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="metric-card">
+            <p class="metric-label">Weekly card views</p>
+            <p class="metric-value">12,430</p>
+            <p class="metric-trend up">+18% from last week</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Leads captured</p>
+            <p class="metric-value">284</p>
+            <p class="metric-trend up">+9% conversion</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Top CTA</p>
+            <p class="metric-value">Book a meeting</p>
+            <p class="metric-trend">52% click share</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-label">Paystack revenue</p>
+            <p class="metric-value">$6,840</p>
+            <p class="metric-trend up">+22% MRR</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>HiHello-ish</strong>
+        <p>Digital business cards for modern teams.</p>
+      </div>
+      <div class="footer-links">
+        <span>Product</span>
+        <span>Pricing</span>
+        <span>Resources</span>
+        <span>Contact</span>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="auth-modal" aria-hidden="true">
+      <div class="modal">
+        <button class="modal-close" type="button" data-close-auth>&times;</button>
+        <div class="modal-header">
+          <h2 id="auth-title">Welcome back</h2>
+          <p id="auth-subtitle">Sign in to manage your digital card and leads.</p>
+        </div>
+        <div class="auth-toggle" role="tablist">
+          <button class="toggle active" type="button" data-auth-mode="login">Login</button>
+          <button class="toggle" type="button" data-auth-mode="signup">Sign up</button>
+        </div>
+        <form class="auth-form" id="auth-form">
+          <label>
+            Work email
+            <input type="email" name="email" placeholder="you@company.com" required />
+          </label>
+          <label class="signup-only">
+            Full name
+            <input type="text" name="name" placeholder="Sasha Keene" />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="••••••••" required />
+          </label>
+          <button class="primary" type="submit" id="auth-submit">Sign in</button>
+          <p class="auth-footnote" id="auth-footnote">
+            New here? Create a free account to start sharing your card.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="paywall-modal" aria-hidden="true">
+      <div class="modal paywall">
+        <button class="modal-close" type="button" data-close-paywall>&times;</button>
+        <div class="modal-header">
+          <h2>Unlock your card</h2>
+          <p>Start a 14-day Pro trial and accept leads instantly.</p>
+        </div>
+        <div class="paywall-grid">
+          <div class="price-card">
+            <p class="plan">Pro</p>
+            <p class="price">$14<span>/mo</span></p>
+            <ul>
+              <li>Unlimited cards</li>
+              <li>Paystack checkout</li>
+              <li>Lead capture & exports</li>
+              <li>Custom branding</li>
+            </ul>
+            <button class="primary" data-paystack>Pay with Paystack</button>
+            <p class="small-note">Secure payments by Paystack.</p>
+          </div>
+          <div class="price-card muted">
+            <p class="plan">Teams</p>
+            <p class="price">$49<span>/mo</span></p>
+            <ul>
+              <li>Team templates</li>
+              <li>Admin controls</li>
+              <li>CRM integrations</li>
+              <li>Priority support</li>
+            </ul>
+            <button class="ghost" data-paystack>Contact sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
