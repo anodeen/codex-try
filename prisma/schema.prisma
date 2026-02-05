@@ -1,0 +1,177 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum OrgRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum EventType {
+  VIEW
+  CLICK
+  SHARE
+  LEAD_CAPTURE
+}
+
+enum BillingStatus {
+  TRIAL
+  ACTIVE
+  PAST_DUE
+  CANCELED
+}
+
+enum PlanTier {
+  FREE
+  PRO
+  TEAM
+}
+
+enum PaymentProvider {
+  PAYSTACK
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+}
+
+enum UserType {
+  INDIVIDUAL
+  TEAM
+}
+
+model User {
+  id           String                @id @default(uuid())
+  email        String                @unique
+  passwordHash String
+  name         String
+  userType     UserType              @default(INDIVIDUAL)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  memberships  OrganizationMember[]
+  profiles     Profile[]
+}
+
+model Organization {
+  id             String                @id @default(uuid())
+  name           String
+  plan           PlanTier              @default(FREE)
+  billingStatus  BillingStatus         @default(TRIAL)
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
+  memberships    OrganizationMember[]
+  profiles       Profile[]
+  subscriptions  Subscription[]
+  payments       Payment[]
+  webhookEvents  WebhookEvent[]
+}
+
+model OrganizationMember {
+  id        String        @id @default(uuid())
+  org       Organization  @relation(fields: [orgId], references: [id])
+  orgId     String
+  user      User          @relation(fields: [userId], references: [id])
+  userId    String
+  role      OrgRole       @default(MEMBER)
+  createdAt DateTime      @default(now())
+
+  @@unique([orgId, userId])
+}
+
+model Profile {
+  id          String     @id @default(uuid())
+  org         Organization @relation(fields: [orgId], references: [id])
+  orgId       String
+  user        User       @relation(fields: [userId], references: [id])
+  userId      String
+  displayName String
+  title       String?
+  company     String?
+  bio         String?
+  theme       Json?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  links       ProfileLink[]
+  leads       Lead[]
+  events      Event[]
+}
+
+model ProfileLink {
+  id        String   @id @default(uuid())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String
+  label     String
+  url       String
+  type      String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id        String   @id @default(uuid())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  message   String?
+  createdAt DateTime @default(now())
+}
+
+model Event {
+  id        String    @id @default(uuid())
+  profile   Profile   @relation(fields: [profileId], references: [id])
+  profileId String
+  type      EventType
+  metadata  Json?
+  createdAt DateTime  @default(now())
+}
+
+model Subscription {
+  id              String             @id @default(uuid())
+  org             Organization       @relation(fields: [orgId], references: [id])
+  orgId           String
+  provider        PaymentProvider
+  providerRef     String
+  plan            PlanTier
+  status          SubscriptionStatus @default(ACTIVE)
+  currentPeriodEnd DateTime?
+  createdAt       DateTime           @default(now())
+}
+
+model Payment {
+  id          String          @id @default(uuid())
+  org         Organization    @relation(fields: [orgId], references: [id])
+  orgId       String
+  provider    PaymentProvider
+  providerRef String
+  amount      Int
+  currency    String          @default("USD")
+  status      PaymentStatus   @default(PENDING)
+  createdAt   DateTime        @default(now())
+}
+
+model WebhookEvent {
+  id        String        @id @default(uuid())
+  org       Organization? @relation(fields: [orgId], references: [id])
+  orgId     String?
+  provider  PaymentProvider
+  eventType String
+  payload   Json
+  createdAt DateTime      @default(now())
+}
